@@ -1,0 +1,19 @@
+ORIGINAL
+
+5000 Bodies with 100 iterations: 7.774 Millions Interactions/second
+pos=6.583412e+03
+
+
+
+SoA y float
+
+5000 Bodies with 100 iterations: 38.265 Millions Interactions/second
+pos=6.583412e+03
+
+
+
+
+Con alineamiento y directivas simd
+
+5000 Bodies with 100 iterations: 38.060 Millions Interactions/second
+pos=6.583412e+03

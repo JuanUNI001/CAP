@@ -8,16 +8,16 @@
 #include "nbody_routines.h"
 
 
-double solutionPos(body *p, int n)
+double solutionPos(body p, int n)
 {
 	float pos_private = 0.0f;
 	double pos_global  = 0.0f;
 
 	for (int i = 0 ; i < n; i++) {
-		pos_private = sqrtf(p[i].x*p[i].x+p[i].y*p[i].y+p[i].z*p[i].z);
-		pos_global+=pos_private;
+		pos_private = sqrtf(p.x[i]*p.x[i] + p.y[i]*p.y[i] + p.z[i]*p.z[i]);
+		pos_global += pos_private;
 	}
-	return(pos_global);
+	return pos_global;
 }
 
 
@@ -29,7 +29,7 @@ int main(const int argc, const char** argv) {
 	const float dt = 0.01f; // time step
 	const int nIters = 100;  // simulation iterations
 
-	body *p = get_memory(nBodies);
+	body p = get_memory(nBodies);
 
 	randomizeBodies(p, nBodies); // Init pos / vel data
 
