@@ -37,10 +37,13 @@ void bodyForce(body p, float dt, int n) {
 }
 
 void integrate(body p, float dt, int n){	
-	#pragma simd simdlen(8) aligned(x, y, z: alignment)
-	for (int i = 0 ; i < n; i++) {
-		p.x[i] += p.vx[i] * dt;
-		p.y[i] += p.vy[i] * dt;
-		p.z[i] += p.vz[i] * dt;
+	float *x  = p.x,  *y  = p.y,  *z  = p.z;
+	float *vx = p.vx, *vy = p.vy, *vz = p.vz;
+
+	#pragma simd simdlen(8) aligned(x, y, z, vx, vy, vz : alignment)
+	for (int i = 0; i < n; i++) {
+		x[i] += vx[i] * dt;
+		y[i] += vy[i] * dt;
+		z[i] += vz[i] * dt;
 	}
 }
