@@ -33,7 +33,7 @@ void main(int argc, char* argv[])
 
 	pi_local = 0.0;
 
-	for (int i=...; i<...; i++)
+	for (int i=world_rank; i<N; i+=world_size)
 	{
 		x = (i+0.5)/N;
 		f = 4.0/(1.0 + x*x);
@@ -41,7 +41,7 @@ void main(int argc, char* argv[])
 		pi_local += area;
 	}
 
-	MPI_Reduce(...);
+	MPI_Reduce(&pi_local, &pi, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
 	if (world_rank==0){
 		exactpi = 4.0*atan(1.0);
