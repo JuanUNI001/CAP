@@ -3,7 +3,7 @@
 
 #include "nbody.h"
 
-void bodyForce(body *p, float dt, int n);
-void integrate(body *p, float dt, int n);
+void bodyForce(body p, float dt, int n);
+void integrate(body p, float dt, int n);
 
 #endif
